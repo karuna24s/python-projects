@@ -1,3 +1,6 @@
+from database import Database
+
+
 class Post(object):
     # init methods stands for initialize and is the method that gets called when
     # when you say you want to create a new thing called a post and this thing
@@ -13,7 +16,7 @@ class Post(object):
     # add a method to save the post to the database
     # connect to the database and it will insert some data in this collection (posts)
     def save_to_mongo(self):
-        Datebase.insert(collection='posts',
+        Database.insert(collection='posts',
                         data=self.json())
 
     # creates a JSON representation of the post itself. This JSON representation
@@ -25,5 +28,5 @@ class Post(object):
             'author': self.author,
             'content': self.content,
             'title': self.title,
-            'created_date': self.date
+            'created_date': self.created_date
         }
