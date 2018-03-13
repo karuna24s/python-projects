@@ -30,3 +30,15 @@ class Post(object):
             'title': self.title,
             'created_date': self.created_date
         }
+    # What this method would do is allows us to see Post.from_mongo and give us an id and it will give
+    # us back the Mongo data that we get from that database.
+    @staticmethod
+    def from_mongo(id):
+        # this method will find one post that has a specific id
+        # Post.from_mongo('123')
+        return Database.DATABASE.find_one(collection='posts', query={'id': id})
+
+    @staticmethod
+    def from_blog(id):
+        # this method will find all the posts that has a specific blog_id
+        return [post for post in Database.find(collection='posts', query={'blog_id': id})]
